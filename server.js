@@ -98,6 +98,18 @@ app.get('/shoes', (req, res) => {
 
 //     res.json(users);
 // });
+// Explanation:
+// Import Express: Require the express module.
+// Create App: Create an instance of the Express application.
+// GET Route: Define a GET route for /users.
+// Access Query Parameters: Access the query parameters using req.query. In this example, we are accessing age and location.
+// Filter Data: Filter the users array based on the provided query parameters.
+// Send Response: Send the filtered users data as a JSON response.
+// Example Usage:
+// Get all users: http://localhost:3000/users
+// Filter by age: http://localhost:3000/users?age=25
+// Filter by location: http://localhost:3000/users?location=NY
+// Filter by both: http://localhost:3000/users?age=25&location=NY
 
 
 
