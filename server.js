@@ -52,21 +52,54 @@ app.get('/collectibles/:storedJunk', (req, res) => {
 // STILL WORKING ON THIS
 // Filter shoes by Query Parameters
 app.get('/shoes', (req, res) => {
-    console.log(req.query)
-    const minPrice = req.query.minPrice
-    const maxPrice = req.query.maxPrice
-    const shoeType = req.query.shoeType
+    // console.log(req.query)
+    // const minPrice = req.query.minPrice
+    // const maxPrice = req.query.maxPrice
+    // const shoeType = req.query.shoeType
+    // let displayShoes
+
+    // if (shoeType) {
+    //     console.log(shoeType)
+    //     displayShoes = shoes.filter((shoe) => shoe.type === shoeType)
+    //     for (i = 0; i < displayShoes.length; i++) {
+            
+    //     }
+    // }
+    const {minPrice, maxPrice, shoeType} = req.query
     let displayShoes
 
-    if (shoeType) {
-        console.log(shoeType)
-        displayShoes = shoes.filter((shoe) => shoe.type === shoeType)
-        for (i = 0; i < displayShoes.length; i++) {
-            
-        }
+    if (minPrice) {
+        displayShoes = shoes.filter(shoe => shoe.price === parseInt(price))
     }
-    res.send(`${shoes}`)
+
+
+
+    res.send(shoes)
 })
+
+
+// app.get('/users', (req, res) => {
+//     const { age, location } = req.query;
+  
+//     // Filter users based on query parameters
+//     let users = [
+//       { name: 'Alice', age: 25, location: 'NY' },
+//       { name: 'Bob', age: 30, location: 'CA' },
+//       { name: 'Charlie', age: 28, location: 'NY' }
+//     ];
+
+//     if (age) {
+//         users = users.filter(user => user.age === parseInt(age));
+//      }
+
+//     if (location) {
+//         users = users.filter(user => user.location === location);
+//     }
+
+//     res.json(users);
+// });
+
+
 
 
 // listen on port3000 for requests
