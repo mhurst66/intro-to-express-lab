@@ -56,6 +56,15 @@ app.get('/shoes', (req, res) => {
     const minPrice = req.query.minPrice
     const maxPrice = req.query.maxPrice
     const shoeType = req.query.shoeType
+    let displayShoes
+
+    if (shoeType) {
+        console.log(shoeType)
+        displayShoes = shoes.filter((shoe) => shoe.type === shoeType)
+        for (i = 0; i < displayShoes.length; i++) {
+            
+        }
+    }
     res.send(`${shoes}`)
 })
 
