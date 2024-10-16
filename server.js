@@ -52,10 +52,52 @@ app.get('/collectibles/:storedJunk', (req, res) => {
 // STILL WORKING ON THIS
 // Filter shoes by Query Parameters
 app.get('/shoes', (req, res) => {
-    // console.log(req.query)
-    // const minPrice = req.query.minPrice
-    // const maxPrice = req.query.maxPrice
-    // const shoeType = req.query.shoeType
+    const minPrice = req.query.minPrice
+    const maxPrice = req.query.maxPrice
+    // const inputPrice = req.query.inputPrice
+    const shoeType = req.query.shoeType
+
+    let displayShoes
+
+    if (minPrice) {
+        displayShoes = shoes.filter(shoe => shoe.price > minPrice)
+    }
+
+    if (shoeType) {
+        displayShoes = shoes.filter((shoe) => shoe.type === shoeType)
+    }
+
+    // res.send(displayShoes)
+    res.send(shoes)
+})
+
+
+
+
+
+
+
+// listen on port3000 for requests
+app.listen(3000, () => {
+    console.log('Listening on port3000')
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Graveyard
     // let displayShoes
 
     // if (shoeType) {
@@ -65,18 +107,7 @@ app.get('/shoes', (req, res) => {
             
     //     }
     // }
-    const {minPrice, maxPrice, shoeType} = req.query
-    let displayShoes
-
-    if (minPrice) {
-        displayShoes = shoes.filter(shoe => shoe.price === parseInt(price))
-    }
-
-
-
-    res.send(shoes)
-})
-
+    // const {minPrice, maxPrice, shoeType} = req.query
 
 // app.get('/users', (req, res) => {
 //     const { age, location } = req.query;
@@ -110,11 +141,3 @@ app.get('/shoes', (req, res) => {
 // Filter by age: http://localhost:3000/users?age=25
 // Filter by location: http://localhost:3000/users?location=NY
 // Filter by both: http://localhost:3000/users?age=25&location=NY
-
-
-
-
-// listen on port3000 for requests
-app.listen(3000, () => {
-    console.log('Listening on port3000')
-})
