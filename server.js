@@ -49,31 +49,38 @@ app.get('/collectibles/:storedJunk', (req, res) => {
     }
 })
 
-// STILL WORKING ON THIS
 // Filter shoes by Query Parameters
 app.get('/shoes', (req, res) => {
     const minPrice = req.query.minPrice
     const maxPrice = req.query.maxPrice
-    // const inputPrice = req.query.inputPrice
     const shoeType = req.query.shoeType
 
     let displayShoes
 
     if (minPrice) {
-        displayShoes = shoes.filter(shoe => shoe.price > minPrice)
+        console.log("minPrice")
+        displayShoes = shoes.filter((shoe) => shoe.price >= minPrice)
+        return res.send(displayShoes)
+    } else {
+        res.send(shoes)
+    }
+
+    if (maxPrice) {
+        console.log("maxPrice")
+        displayShoes = shoes.filter((shoe) => shoe.price <= maxPrice)
+        return res.send(displayShoes)
+    } else {
+        res.send(shoes)
     }
 
     if (shoeType) {
+        console.log("shoeType")
         displayShoes = shoes.filter((shoe) => shoe.type === shoeType)
+        return res.send(displayShoes)
+    } else {
+        res.send(shoes)
     }
-
-    // res.send(displayShoes)
-    res.send(shoes)
 })
-
-
-
-
 
 
 
@@ -83,52 +90,8 @@ app.listen(3000, () => {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Graveyard
-    // let displayShoes
 
-    // if (shoeType) {
-    //     console.log(shoeType)
-    //     displayShoes = shoes.filter((shoe) => shoe.type === shoeType)
-    //     for (i = 0; i < displayShoes.length; i++) {
-            
-    //     }
-    // }
-    // const {minPrice, maxPrice, shoeType} = req.query
-
-// app.get('/users', (req, res) => {
-//     const { age, location } = req.query;
-  
-//     // Filter users based on query parameters
-//     let users = [
-//       { name: 'Alice', age: 25, location: 'NY' },
-//       { name: 'Bob', age: 30, location: 'CA' },
-//       { name: 'Charlie', age: 28, location: 'NY' }
-//     ];
-
-//     if (age) {
-//         users = users.filter(user => user.age === parseInt(age));
-//      }
-
-//     if (location) {
-//         users = users.filter(user => user.location === location);
-//     }
-
-//     res.json(users);
-// });
 // Explanation:
 // Import Express: Require the express module.
 // Create App: Create an instance of the Express application.
